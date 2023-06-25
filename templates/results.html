@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Results</title>
+    <style>
+      body {
+        margin-left: 0px;
+        background-color: #6c8fb3;
+        font-family: Arial, sans-serif;
+      }
+      h1 {
+        display: inline-block;
+        width: 50%;
+        margin-left: 37%;
+        margin-bottom: 70px;
+      }
+
+      h1 span {
+        text-align: center;
+        border: 2px solid #537ea5;
+        padding: 16px;
+        color: #007bff;
+        background-color: #16436b;
+        color: white;
+        border-radius: 20px 40px;
+      }
+
+      form {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 20px;
+      }
+
+      button {
+        padding: 10px 20px;
+        font-size: 24px;
+        background-color: #277cb4;
+        color: white;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+        margin-bottom: 20px;
+      }
+
+      button:hover {
+        background-color: #37a1ff;
+      }
+
+      h2 {
+        margin-left: 10px;
+      }
+
+      pre {
+        background-color: #9aceff;
+        font-size: 20px;
+        margin-left: 10px;
+        border: 2px solid black;
+        padding: 10px;
+        white-space: pre-wrap;
+        display: inline-block;
+      }
+      footer {
+        background-color: #16436b;
+        padding: 10px;
+        color: white;
+
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+      }
+      footer span {
+        margin-left: 25%;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>
+      <span> The issue of production lines</span>
+    </h1>
+    <form action="{% url 'save_all_results' %}" method="post">
+      {% csrf_token %}
+      <button type="submit">Show All Results</button>
+    </form>
+
+    <form action="{% url 'show_best_result' %}" method="post">
+      {% csrf_token %}
+      <button type="submit">Show Best Result</button>
+    </form>
+
+    {% if optimal_results %}
+    <h2>Optimal Results Steps:</h2>
+    <pre>{{ optimal_results }}</pre>
+    {% endif %} {% if all_results %}
+    <h2>All Results Steps:</h2>
+    <pre>{{ all_results }}</pre>
+    {% endif %}
+
+    <footer>
+      &copy; 2023 My Website
+      <span>
+        designed by: Khaled_135930 & Raghad_112359 & Muhanad_134350 &
+        Mariam_112318
+      </span>
+    </footer>
+  </body>
+</html>
